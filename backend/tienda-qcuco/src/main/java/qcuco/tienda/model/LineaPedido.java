@@ -1,13 +1,15 @@
 package qcuco.tienda.model;
 
+import java.math.BigDecimal;
+
 public class LineaPedido {
     private Producto producto;
     private String nombreProducto;
-    private Double precioUnitario;
+    private BigDecimal precioUnitario;
     private Integer cantidad;
-    private Double subtotal;
+    private BigDecimal subtotal;
 
-    public LineaPedido(Producto producto, String nombreProducto, Double precioUnitario, Integer cantidad, Double subtotal) {
+    public LineaPedido(Producto producto, String nombreProducto, BigDecimal precioUnitario, Integer cantidad, BigDecimal subtotal) {
         this.producto = producto;
         this.nombreProducto = nombreProducto;
         this.precioUnitario = precioUnitario;
@@ -31,12 +33,20 @@ public class LineaPedido {
         this.nombreProducto = nombreProducto;
     }
 
-    public Double getPrecioUnitario() {
+    public BigDecimal getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(Double precioUnitario) {
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
         this.precioUnitario = precioUnitario;
+    }
+
+    public BigDecimal getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
     }
 
     public Integer getCantidad() {
@@ -47,11 +57,4 @@ public class LineaPedido {
         this.cantidad = cantidad;
     }
 
-    public Double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(Double subtotal) {
-        this.subtotal = subtotal;
-    }
 }

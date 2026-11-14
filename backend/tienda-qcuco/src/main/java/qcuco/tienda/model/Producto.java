@@ -2,6 +2,7 @@ package qcuco.tienda.model;
 
 import qcuco.tienda.model.enums.Sexo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Producto {
@@ -9,7 +10,7 @@ public class Producto {
     private String sku;
     private String nombre;
     private String descripcion;
-    private Double precio;
+    private BigDecimal precio;
     private Integer stock;
     private String imagenUrl;
     private Boolean activo;
@@ -20,7 +21,7 @@ public class Producto {
     private String talla;
     private String color;
 
-    public Producto(Long id, String sku, String nombre, String descripcion, Double precio, Integer stock, String imagenUrl, Boolean activo, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, String talla, String color) {
+    public Producto(Long id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, Boolean activo, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, String talla, String color) {
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
@@ -69,11 +70,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 

@@ -2,6 +2,7 @@ package qcuco.tienda.model;
 
 import qcuco.tienda.model.enums.EstadoPedido;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -12,12 +13,12 @@ public class Pedido {
     private Date fecha;
     private EstadoPedido estado;
     private String direccionEnvio;
-    private Double subtotal;
-    private Double gastosEnvio;
-    private Double total;
+    private BigDecimal subtotal;
+    private BigDecimal gastosEnvio;
+    private BigDecimal total;
     private List<LineaPedido> lineas;
 
-    public Pedido(Long id, String codigo, Usuario usuario, Date fecha, EstadoPedido estado, String direccionEnvio, Double subtotal, Double gastosEnvio, Double total, List<LineaPedido> lineas) {
+    public Pedido(Long id, String codigo, Usuario usuario, Date fecha, EstadoPedido estado, String direccionEnvio, BigDecimal subtotal, BigDecimal gastosEnvio, BigDecimal total, List<LineaPedido> lineas) {
         this.id = id;
         this.codigo = codigo;
         this.usuario = usuario;
@@ -78,27 +79,27 @@ public class Pedido {
         this.direccionEnvio = direccionEnvio;
     }
 
-    public Double getSubtotal() {
+    public BigDecimal getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(Double subtotal) {
+    public void setSubtotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 
-    public Double getGastosEnvio() {
+    public BigDecimal getGastosEnvio() {
         return gastosEnvio;
     }
 
-    public void setGastosEnvio(Double gastosEnvio) {
+    public void setGastosEnvio(BigDecimal gastosEnvio) {
         this.gastosEnvio = gastosEnvio;
     }
 
-    public Double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
