@@ -5,7 +5,7 @@ import qcuco.tienda.model.enums.Sexo;
 import java.util.Date;
 
 public class Producto {
-    private Integer id;
+    private Long id;
     private String sku;
     private String nombre;
     private String descripcion;
@@ -20,7 +20,7 @@ public class Producto {
     private String talla;
     private String color;
 
-    public Producto(Integer id, String sku, String nombre, String descripcion, Double precio, Integer stock, String imagenUrl, Boolean activo, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, String talla, String color) {
+    public Producto(Long id, String sku, String nombre, String descripcion, Double precio, Integer stock, String imagenUrl, Boolean activo, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, String talla, String color) {
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
@@ -37,11 +37,11 @@ public class Producto {
         this.color = color;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

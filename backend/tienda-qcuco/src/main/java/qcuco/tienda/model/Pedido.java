@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Pedido {
-    private Integer id;
+    private Long id;
     private String codigo;
     private Usuario usuario;
     private Date fecha;
@@ -17,7 +17,7 @@ public class Pedido {
     private Double total;
     private List<LineaPedido> lineas;
 
-    public Pedido(Integer id, String codigo, Usuario usuario, Date fecha, EstadoPedido estado, String direccionEnvio, Double subtotal, Double gastosEnvio, Double total, List<LineaPedido> lineas) {
+    public Pedido(Long id, String codigo, Usuario usuario, Date fecha, EstadoPedido estado, String direccionEnvio, Double subtotal, Double gastosEnvio, Double total, List<LineaPedido> lineas) {
         this.id = id;
         this.codigo = codigo;
         this.usuario = usuario;
@@ -30,11 +30,11 @@ public class Pedido {
         this.lineas = lineas;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

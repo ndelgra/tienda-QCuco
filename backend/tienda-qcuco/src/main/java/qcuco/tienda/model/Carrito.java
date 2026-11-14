@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Carrito {
-    private Integer id;
+    private Long id;
     private Usuario usuario;
     private List<LineaCarrito> lineas = new ArrayList<LineaCarrito>();
 
-    public Carrito(int id, Usuario usuario, List<LineaCarrito> lineas) {
+    public Carrito(Long id, Usuario usuario, List<LineaCarrito> lineas) {
         this.id = id;
         this.usuario = usuario;
         this.lineas = lineas;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
