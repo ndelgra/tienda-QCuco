@@ -5,7 +5,7 @@ import qcuco.tienda.model.enums.Rol;
 import java.util.Date;
 
 public class Usuario {
-    private Integer id;
+    private Long id;
     private String uid;
     private String email;
     private String nombre;
@@ -14,7 +14,7 @@ public class Usuario {
     private Rol rol;
     private Date fechaAlta;
 
-    public Usuario(Integer id, String uid, String email, String nombre, String apellidos, String direccionEnvio, Rol rol, Date fechaAlta) {
+    public Usuario(Long id, String uid, String email, String nombre, String apellidos, String direccionEnvio, Rol rol, Date fechaAlta) {
         this.id = id;
         this.uid = uid;
         this.email = email;
@@ -25,11 +25,11 @@ public class Usuario {
         this.fechaAlta = fechaAlta;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
