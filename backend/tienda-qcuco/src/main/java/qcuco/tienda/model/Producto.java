@@ -1,6 +1,7 @@
 package qcuco.tienda.model;
 
 import qcuco.tienda.model.enums.EstadoPedido;
+import qcuco.tienda.model.enums.EstadoProducto;
 import qcuco.tienda.model.enums.Sexo;
 
 import java.math.BigDecimal;
@@ -19,7 +20,7 @@ public class Producto {
     private Date fechaAlta;
     private Categoria categoria;
     private Sexo sexo;
-    private EstadoPedido estadoPedido;
+    private EstadoProducto estadoProducto;
     private String talla;
     private String color;
 
