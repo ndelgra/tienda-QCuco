@@ -24,7 +24,7 @@ public class Producto {
     private String talla;
     private String color;
 
-    public Producto(Long id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, Boolean activo, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, String talla, String color) {
+    public Producto(Long id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, Boolean activo, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, EstadoProducto estadoProducto, String talla, String color) {
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
@@ -37,6 +37,7 @@ public class Producto {
         this.fechaAlta = fechaAlta;
         this.categoria = categoria;
         this.sexo = sexo;
+        this.estadoProducto = estadoProducto;
         this.talla = talla;
         this.color = color;
     }
@@ -135,6 +136,14 @@ public class Producto {
 
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
+    }
+
+    public EstadoProducto getEstadoProducto() {
+        return estadoProducto;
+    }
+
+    public void setEstadoProducto(EstadoProducto estadoProducto) {
+        this.estadoProducto = estadoProducto;
     }
 
     public String getTalla() {
