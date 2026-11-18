@@ -1,6 +1,5 @@
 package qcuco.tienda.model;
 
-import qcuco.tienda.model.enums.EstadoPedido;
 import qcuco.tienda.model.enums.EstadoProducto;
 import qcuco.tienda.model.enums.Sexo;
 
