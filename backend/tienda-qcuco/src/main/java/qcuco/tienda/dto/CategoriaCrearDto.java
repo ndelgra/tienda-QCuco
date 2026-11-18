@@ -7,9 +7,9 @@ public class CategoriaCrearDto {
     public CategoriaCrearDto() {
     }
 
-    public CategoriaCrearDto(String descripcion, String nombre) {
-        this.descripcion = descripcion;
+    public CategoriaCrearDto(String nombre, String descripcion) {
         this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
     public String getNombre() {
