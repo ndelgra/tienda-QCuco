@@ -18,7 +18,7 @@ public class CategoriaService {
 
     public CategoriaService() {
         ejemplos();
-       }
+    }
 
     private void ejemplos() {
         // Creamos unas categorías de prueba en memoria
@@ -101,7 +101,7 @@ public class CategoriaService {
 
         Categoria categoria = new Categoria();
         categoria.setId(idGenerada++);
-        categoria.setDescripcion(c.getNombre());
+        categoria.setNombre(c.getNombre());
         categoria.setDescripcion(c.getDescripcion());
 
         categorias.add(categoria);
