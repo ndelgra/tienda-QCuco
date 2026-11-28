@@ -5,6 +5,9 @@ public class CategoriaDto {
     private String nombre;
     private String descripcion;
 
+    public CategoriaDto() {
+    }
+
     public CategoriaDto(long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;

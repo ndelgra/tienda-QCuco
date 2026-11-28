@@ -17,10 +17,14 @@ public class CategoriaService {
     private long idGenerada = 1;
 
     public CategoriaService() {
+       }
+
+    private void ejemplos() {
         // Creamos unas categorías de prueba en memoria
         categorias.add(new Categoria(idGenerada++, "Camisetas", "Camisetas y tops para niños y niñas"));
         categorias.add(new Categoria(idGenerada++, "Pantalones", "Pantalones largos, cortos y vaqueros"));
         categorias.add(new Categoria(idGenerada++, "Abrigos", "Chaquetas, abrigos y ropa de invierno"));
+
     }
 
     private CategoriaDto convertToDTO (Categoria c) {
@@ -40,27 +44,33 @@ public class CategoriaService {
         return categoriasDTO;
     }
 
-    public CategoriaDto consultar (Long id) {
+    public Categoria buscarEntidad(Long id) {
         /*Revisamos si existe alguna categoría que coincida con el id que nos mandan; si se encuentra
-        la categoría, la devolvemos transformada en DTO. Si no la encontramos devolvemos una excepción
-        que notifique el error exacto
+        la categoría, la devolvemos. Si no la encontramos devolvemos una excepción que notifique el error exacto
          */
         for (Categoria c: categorias) {
             if (c.getId().equals(id)) {
-                return convertToDTO(c);
+                return c;
             }
         }
-
         throw new ResourceNotFoundException("Error 404: No se ha encontrado una categoría coincidente");
     }
 
-    private void validar(CategoriaCrearDto c) {
+    public CategoriaDto consultar(Long id) {
+        /*Devuelve la categoría encontrada por el metodo buscar entidad, pero convertida a DTO,
+        si no se ha encontrado una categoría por el metodo se devuelve la excepción.
+         */
+        CategoriaDto c = convertToDTO(buscarEntidad(id));
+        return  c;
+    }
+
+    private void validar(CategoriaCrearDto c, Long id) {
     //Validamos si el nombre recibido como parámetro está vacío o entra en conflicto con otro nombre existente
         if (c == null || estaVacio(c.getNombre())) {
             throw new BlankException("Error 400: El nombre no puede estar vacío");
         }
 
-        if (nombreRepetido(c.getNombre())) {
+        if (nombreRepetido(c.getNombre(), id)) {
             throw new DuplicatedException("Error 409: Ya existe una categoría con ese nombre");
         }
 
@@ -71,10 +81,10 @@ public class CategoriaService {
         return s == null || s.isBlank();
     }
 
-    private boolean nombreRepetido(String s) {
+    private boolean nombreRepetido(String s, Long id) {
         //Comprobamos si ese nombre ya existe
         for (Categoria c: categorias) {
-            if (s.equalsIgnoreCase(c.getNombre())) {
+            if (s.equalsIgnoreCase(c.getNombre()) && buscarEntidad(id).equals(c.getId()) ) {
                 return true;
             }
         }
@@ -86,7 +96,7 @@ public class CategoriaService {
         categoría que se añadirá a nuestra lista y devolvemos nuestra categoría convertida
         a DTO gracias a nuestro método
          */
-        validar(c);
+        validar(c, null);
 
         Categoria categoria = new Categoria();
         categoria.setId(idGenerada++);
@@ -98,9 +108,18 @@ public class CategoriaService {
         return convertToDTO(categoria);
     }
 
-    /*public CategoriaDto modificarCategoria(CategoriaDto c) {
-        
-    }*/
+    public CategoriaDto modificarCategoria(Long id,CategoriaCrearDto dto) {
+        /*Primero se verifica que existe la categoría que se quiere modificar y después que
+        el nombre que se le quiere poner no está en uso. Finalmente cambiamos el nombre y/o
+        la descripción y lo devolvemos como dto
+         */
+        Categoria c = buscarEntidad(id);
+        validar(dto, id);
+        c.setNombre(dto.getNombre());
+        c.setDescripcion(dto.getDescripcion());
+        return convertToDTO(c);
+
+    }
 
 }
 
