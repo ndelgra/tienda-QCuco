@@ -28,7 +28,7 @@ public class CategoriaController {
     }
 
     //Consultar categorías
-    @GetMapping("/{id]")
+    @GetMapping("/{id}")
     public ResponseEntity<CategoriaDto> consultarCategorias(@PathVariable Long id) {
         CategoriaDto c = categoriaService.consultar(id);
         return ResponseEntity.ok(c);
