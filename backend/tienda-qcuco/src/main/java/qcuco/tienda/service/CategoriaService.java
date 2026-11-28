@@ -17,6 +17,7 @@ public class CategoriaService {
     private long idGenerada = 1;
 
     public CategoriaService() {
+        ejemplos();
        }
 
     private void ejemplos() {
