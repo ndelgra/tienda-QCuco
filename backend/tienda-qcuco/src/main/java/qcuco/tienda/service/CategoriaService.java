@@ -1,8 +1,11 @@
 package qcuco.tienda.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import qcuco.tienda.dto.CategoriaCrearDto;
 import qcuco.tienda.dto.CategoriaDto;
+import qcuco.tienda.exception.BadRequestException;
 import qcuco.tienda.exception.BlankException;
 import qcuco.tienda.exception.DuplicatedException;
 import qcuco.tienda.exception.ResourceNotFoundException;
@@ -15,6 +18,11 @@ import java.util.List;
 public class CategoriaService {
     List<Categoria> categorias = new ArrayList<>();
     private long idGenerada = 1;
+
+    // Solucionamos el problema de la dependencia circular
+    @Lazy
+    @Autowired
+    private ProductoService productoService;
 
     public CategoriaService() {
         ejemplos();
@@ -111,7 +119,7 @@ public class CategoriaService {
 
     public CategoriaDto modificarCategoria(Long id,CategoriaCrearDto dto) {
         /*Primero se verifica que existe la categoría que se quiere modificar y después que
-        el nombre que se le quiere poner no está en uso. Finalmente cambiamos el nombre y/o
+        el nombre que se le quiere poner no está en uso. Finalmente, cambiamos el nombre y/o
         la descripción y lo devolvemos como dto
          */
         Categoria c = buscarEntidad(id);
@@ -120,6 +128,16 @@ public class CategoriaService {
         c.setDescripcion(dto.getDescripcion());
         return convertToDTO(c);
 
+    }
+
+    public void eliminar(Long id) {
+        /*Buscamos la categoría que se quiere eliminar y verificamos que existe, después, comprobamos que no tenga productos asociados,
+        en caso de que sí los haya, se devuelve una excepción, en caso contrario simplemente se elimina la categoría*/
+        Categoria c = buscarEntidad(id);
+        if (productoService.tieneProductos(id)) {
+            throw new BadRequestException("Error 409: No se puede eliminar una categoría con productos asociados");
+        }
+        categorias.remove(c);
     }
 
 }
