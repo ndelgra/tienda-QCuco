@@ -14,7 +14,6 @@ public class Producto {
     private BigDecimal precio;
     private Integer stock;
     private String imagenUrl;
-    private Boolean activo;
     private Boolean destacado;
     private Date fechaAlta;
     private Categoria categoria;
@@ -23,7 +22,7 @@ public class Producto {
     private String talla;
     private String color;
 
-    public Producto(Long id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, Boolean activo, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, EstadoProducto estadoProducto, String talla, String color) {
+    public Producto(Long id, String sku, String nombre, String descripcion, BigDecimal precio, Integer stock, String imagenUrl, Boolean destacado, Date fechaAlta, Categoria categoria, Sexo sexo, EstadoProducto estadoProducto, String talla, String color) {
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
@@ -31,7 +30,6 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.imagenUrl = imagenUrl;
-        this.activo = activo;
         this.destacado = destacado;
         this.fechaAlta = fechaAlta;
         this.categoria = categoria;
@@ -95,14 +93,6 @@ public class Producto {
 
     public void setImagenUrl(String imagenUrl) {
         this.imagenUrl = imagenUrl;
-    }
-
-    public Boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
     }
 
     public Boolean getDestacado() {
