@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import qcuco.tienda.dto.CategoriaCrearDto;
 import qcuco.tienda.dto.CategoriaDto;
 import qcuco.tienda.service.CategoriaService;
+import qcuco.tienda.service.ProductoService;
 
 import java.util.List;
 
@@ -14,9 +15,11 @@ import java.util.List;
 public class CategoriaAdminController {
 
     private final CategoriaService categoriaService;
+    private final ProductoService productoService;
 
-    public CategoriaAdminController(CategoriaService categoriaService) {
+    public CategoriaAdminController(CategoriaService categoriaService, ProductoService productoService) {
         this.categoriaService = categoriaService;
+        this.productoService = productoService;
     }
 
     // Listar categorías (administración)
@@ -34,5 +37,18 @@ public class CategoriaAdminController {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoria);
     }
 
+    // Modificar una categoría
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaDto> modificar(@PathVariable Long id, @RequestBody CategoriaCrearDto c) {
+        CategoriaDto categoria = categoriaService.modificarCategoria(id, c);
+        return ResponseEntity.ok(categoria);
+    }
 
+    // Eliminamos una categoría
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        categoriaService.eliminar(id);
+        return ResponseEntity.noContent().build();
+
+    }
 }
